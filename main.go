@@ -54,6 +54,8 @@ func main() {
 				return
 			}
 
+			fmt.Println("Decoded nonce:", nonce)
+
 			key := sha256.Sum256([]byte(sharedSecret))
 			block, err := aes.NewCipher(key[:])
 			if err != nil {
