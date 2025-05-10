@@ -25,6 +25,7 @@ func main() {
 		panic(err)
 	}
 	fmt.Println("📌 Host Fingerprint:", fingerprint)
+	fmt.Println("🔑 Shared Secret:", sharedSecret)
 
 	os.Remove(socketPath)
 	ln, err := net.Listen("unix", socketPath)
@@ -45,6 +46,9 @@ func main() {
 			if err != nil {
 				return
 			}
+
+			fmt.Println("Received nonceHex from container:", nonceHex)
+
 			nonce, err := hex.DecodeString(strings.TrimSpace(nonceHex))
 			if err != nil {
 				return
