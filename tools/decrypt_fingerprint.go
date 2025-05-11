@@ -9,9 +9,6 @@ import (
 )
 
 func DecryptFingerprint(sharedSecret string, nonceHex string, ciphertextHex string) (string, error) {
-	fmt.Println("sharedSecret:", sharedSecret)
-	fmt.Println("nonceHex:", nonceHex)
-	fmt.Println("ciphertextHex:", ciphertextHex)
 	ciphertext, err := hex.DecodeString(ciphertextHex)
 	if err != nil {
 		return "", fmt.Errorf("invalid ciphertext: %w", err)
