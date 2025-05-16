@@ -15,8 +15,7 @@ import (
 )
 
 const (
-	socketPath   = "/run/fingerprint.sock"
-	sharedSecret = "{{SHARED_SECRET}}"
+	socketPath = "/run/fingerprint.sock"
 )
 
 func main() {

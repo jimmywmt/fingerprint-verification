@@ -1,0 +1,5 @@
+docker build --no-cache --build-arg SHARED_SECRET=utn8nh5cpzhkqac4cjz2wa4il7u85jkj2ytmcfjh24bv2lj452h7akd7hnc0y3cm -t verify-builder .
+
+docker create --name temp verify-builder
+
+docker cp temp:/verify ./verify
