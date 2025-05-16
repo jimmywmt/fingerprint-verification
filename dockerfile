@@ -34,7 +34,7 @@ RUN set -eux; \
   }; \
   echo 'package main' > keys.go; \
   echo 'func decodeXOR(data []byte, key byte) string { dec := make([]byte, len(data)); for i := range data { dec[i] = data[i] ^ key }; return string(dec) }' >> keys.go; \
-  enc SharedSecret "${SHARED_SECRET}"
+  enc SharedSecret "${SHARED_SECRET}" \
   garble -literals -tiny -seed=random build -ldflags="-s -w" -o /out/verify .
 
 
