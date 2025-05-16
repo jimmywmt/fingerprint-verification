@@ -53,7 +53,7 @@ func main() {
 				return
 			}
 
-			key := sha256.Sum256([]byte(SharedSecret))
+			key := sha256.Sum256([]byte(GetSharedSecret()))
 			block, err := aes.NewCipher(key[:])
 			if err != nil {
 				return
