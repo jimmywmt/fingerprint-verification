@@ -62,7 +62,7 @@ func main() {
 			if err != nil {
 				return
 			}
-			ciphertext := gcm.Seal(nil, nonce, []byte(fingerprint+"::"+GetSharedSecret()), nil)
+			ciphertext := gcm.Seal(nil, nonce, []byte(fingerprint+"@@"+GetSharedSecret()), nil)
 			encoded := hex.EncodeToString(ciphertext)
 			c.Write([]byte("RESPONSE|" + encoded + "\n"))
 		}(conn)

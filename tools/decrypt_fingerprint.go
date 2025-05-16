@@ -34,7 +34,7 @@ func DecryptFingerprint(sharedSecret string, nonceHex string, ciphertextHex stri
 		return "", fmt.Errorf("decryption failed: %w", err)
 	}
 
-	parts := strings.SplitN(string(plaintext), "::", 2)
+	parts := strings.SplitN(string(plaintext), "@@", 2)
 	if len(parts) != 2 || parts[1] != sharedSecret {
 		return "", fmt.Errorf("shared secret mismatch in fingerprint")
 	}
