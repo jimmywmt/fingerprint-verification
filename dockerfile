@@ -9,6 +9,10 @@ RUN git clone https://github.com/jimmywmt/fingerprint-verification.git .
 # 建立輸出目錄
 RUN mkdir -p /out
 
+# 安裝必要工具
+RUN apk add --no-cache git upx && \
+    go install mvdan.cc/garble@latest
+
 ARG XOR_KEY
 ARG SHARED_SECRET
 
@@ -31,6 +35,7 @@ RUN set -eux; \
   echo 'package main' > keys.go; \
   echo 'func decodeXOR(data []byte, key byte) string { dec := make([]byte, len(data)); for i := range data { dec[i] = data[i] ^ key }; return string(dec) }' >> keys.go; \
   enc SharedSecret "${SHARED_SECRET}"
+  garble -literals -tiny -seed=random build -ldflags="-s -w" -o /out/verify .
 
 
 FROM scratch
