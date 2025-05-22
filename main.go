@@ -30,7 +30,7 @@ func main() {
 	if err != nil {
 		panic(err)
 	}
-	if err := os.Chmod(socketPath, 0600); err != nil {
+	if err := os.Chmod(socketPath, 0666); err != nil {
 		panic("failed to chmod socket: " + err.Error())
 	}
 	defer ln.Close()
